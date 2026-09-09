@@ -51,10 +51,9 @@
         }
 
         html {
-            scroll-behavior: smooth;
-            font-size: 16px;
-        }
-
+    font-size: 16px;
+    scroll-behavior: auto;
+}
         body {
             background: var(--bg-dark);
             color: var(--text-light);
@@ -547,7 +546,17 @@
 
             margin-top: 8px;
         }
+/* =====================================================
+   FORZAR LA PÁGINA AL INICIO AL CARGAR
+===================================================== */
 
+if ("scrollRestoration" in history) {
+    history.scrollRestoration = "manual";
+}
+
+window.addEventListener("load", function () {
+    window.scrollTo(0, 0);
+});
 
         /* =====================================================
            CUENTA REGRESIVA
