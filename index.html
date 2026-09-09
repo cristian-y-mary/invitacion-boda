@@ -1,819 +1,2656 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#0d0c0c">
-  <meta name="description" content="Invitación de boda de Cristian & Mary — 17 de julio de 2027, Ibarra.">
-  <title>Invitación de Boda — Cristian & Mary</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
-  <style>
-    :root {
-      --bg: #0d0c0c;
-      --card: rgba(23,20,21,.84);
-      --gold: #e2c99a;
-      --gold-light: #f3dfb8;
-      --text: #f7ebe1;
-      --muted: #c3b8b9;
-      --border: rgba(226,201,154,.25);
-      --serif: "Cormorant Garamond", Georgia, serif;
-      --sans: "Montserrat", Arial, sans-serif;
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: var(--sans);
-      font-weight: 300;
-      line-height: 1.7;
-      overflow-x: hidden;
-    }
-
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 0;
-      background: radial-gradient(circle at 50% 15%, rgba(226,201,154,.07), transparent 65%);
-    }
-
-    .navbar {
-      position: fixed;
-      inset: 0 0 auto;
-      z-index: 1000;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 16px 38px;
-      background: rgba(13,12,12,.72);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(226,201,154,.14);
-    }
-
-    .nav-logo {
-      color: var(--gold);
-      text-decoration: none;
-      font: 400 1.5rem var(--serif);
-      letter-spacing: 3px;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 25px;
-      list-style: none;
-    }
-
-    .nav-links a {
-      color: var(--text);
-      text-decoration: none;
-      font-size: .75rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      transition: .3s;
-    }
-
-    .nav-links a:hover { color: var(--gold); }
-
-    section {
-      position: relative;
-      z-index: 1;
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 100px 20px;
-    }
-
-    .section-header {
-      text-align: center;
-      margin-bottom: 55px;
-    }
-
-    .section-subtitle {
-      display: block;
-      margin-bottom: 8px;
-      color: var(--gold);
-      font-size: .8rem;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-    }
-
-    .section-title {
-      color: var(--text);
-      font: 300 2.8rem var(--serif);
-      letter-spacing: 2px;
-    }
-
-    .divider {
-      width: 100px;
-      height: 1px;
-      margin: 18px auto 0;
-      background: linear-gradient(90deg, transparent, var(--gold), transparent);
-    }
-
-    .hero {
-      min-height: 100vh;
-      max-width: none;
-      padding: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      overflow: hidden;
-    }
-
-    .hero-bg {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      filter: brightness(.37) contrast(1.08);
-      transform: scale(1.03);
-      animation: zoom 18s ease-in-out infinite alternate;
-    }
-
-    .hero::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to bottom, rgba(0,0,0,.18), rgba(0,0,0,.48));
-    }
-
-    @keyframes zoom {
-      from { transform: scale(1.03); }
-      to { transform: scale(1.09); }
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      padding: 80px 20px 40px;
-    }
-
-    .hero-kicker {
-      color: var(--gold);
-      font-size: .82rem;
-      letter-spacing: 5px;
-      text-transform: uppercase;
-    }
-
-    .hero-title {
-      margin: 18px 0;
-      font: 300 clamp(3.2rem, 8vw, 6rem)/.9 var(--serif);
-      letter-spacing: 7px;
-      text-transform: uppercase;
-      text-shadow: 0 10px 30px rgba(0,0,0,.8);
-    }
-
-    .hero-title span {
-      display: block;
-      margin: 7px 0;
-      color: var(--gold);
-      font-size: .55em;
-      font-style: italic;
-      letter-spacing: 3px;
-    }
-
-    .hero-date {
-      margin-top: 22px;
-      font-size: 1rem;
-      letter-spacing: 5px;
-    }
-
-    .hero-location {
-      margin-top: 7px;
-      color: var(--gold);
-      font-size: .82rem;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-    }
-
-    .scroll {
-      position: absolute;
-      z-index: 2;
-      bottom: 25px;
-      left: 50%;
-      transform: translateX(-50%);
-      color: var(--gold);
-      text-decoration: none;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 5px;
-      animation: bounce 2s infinite;
-    }
-
-    .scroll small { font-size: .65rem; letter-spacing: 3px; }
-
-    @keyframes bounce {
-      0%,100% { transform: translate(-50%,0); }
-      50% { transform: translate(-50%,-8px); }
-    }
-
-    .btn {
-      display: inline-block;
-      margin-top: 26px;
-      padding: 12px 26px;
-      border: 1px solid var(--gold);
-      border-radius: 2px;
-      color: var(--gold);
-      text-decoration: none;
-      font-size: .72rem;
-      letter-spacing: 2.5px;
-      text-transform: uppercase;
-      transition: .3s;
-    }
-
-    .btn:hover {
-      background: var(--gold);
-      color: var(--bg);
-    }
-
-    .countdown-wrap {
-      max-width: 1100px;
-      margin: -58px auto 0;
-      padding: 0 20px;
-      position: relative;
-      z-index: 10;
-    }
-
-    .countdown {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
-      padding: 35px;
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      backdrop-filter: blur(10px);
-      box-shadow: 0 20px 50px rgba(0,0,0,.55);
-      text-align: center;
-    }
-
-    .number {
-      color: var(--gold);
-      font: 400 3.3rem/1 var(--serif);
-    }
-
-    .label {
-      margin-top: 7px;
-      color: var(--muted);
-      font-size: .68rem;
-      letter-spacing: 2.5px;
-      text-transform: uppercase;
-    }
-
-    .story-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 45px;
-      align-items: center;
-    }
-
-    .photo-card, .text-card, .event-card, .detail-card, .confirmation {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 5px;
-      backdrop-filter: blur(8px);
-    }
-
-    .photo-card { overflow: hidden; }
-    .photo-card img {
-      width: 100%;
-      height: 510px;
-      display: block;
-      object-fit: cover;
-    }
-
-    .text-card { padding: 42px; }
-    .quote {
-      margin-bottom: 20px;
-      color: var(--gold);
-      font: italic 1.55rem/1.5 var(--serif);
-    }
-
-    .events-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 35px;
-    }
-
-    .event-card {
-      padding: 38px 30px;
-      text-align: center;
-      transition: .3s;
-    }
-
-    .event-card:hover {
-      transform: translateY(-5px);
-      border-color: var(--gold);
-    }
-
-    .event-icon {
-      margin-bottom: 17px;
-      color: var(--gold);
-      font-size: 2.2rem;
-    }
-
-    .event-title {
-      margin-bottom: 16px;
-      font: 400 2rem var(--serif);
-    }
-
-    .event-details { color: var(--muted); font-size: .9rem; }
-    .event-details strong { color: var(--text); }
-
-    .event-address {
-      margin-top: 12px;
-      color: var(--gold);
-      font-size: .9rem;
-    }
-
-    .timeline {
-      position: relative;
-      max-width: 800px;
-      margin: auto;
-    }
-
-    .timeline::before {
-      content: "";
-      position: absolute;
-      top: 0; bottom: 0; left: 50%;
-      width: 1px;
-      background: var(--border);
-    }
-
-    .timeline-item {
-      position: relative;
-      width: 50%;
-      padding: 18px 40px;
-    }
-
-    .timeline-item:nth-child(odd) { text-align: right; }
-    .timeline-item:nth-child(even) { left: 50%; }
-
-    .dot {
-      position: absolute;
-      top: 27px;
-      width: 14px;
-      height: 14px;
-      border: 2px solid var(--gold);
-      border-radius: 50%;
-      background: var(--bg);
-      z-index: 2;
-    }
-
-    .timeline-item:nth-child(odd) .dot { right: -7px; }
-    .timeline-item:nth-child(even) .dot { left: -7px; }
-
-    .timeline-box {
-      padding: 23px;
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-    }
-
-    .timeline-time {
-      color: var(--gold);
-      font: 400 1.55rem var(--serif);
-    }
-
-    .timeline-box p {
-      margin-top: 5px;
-      color: var(--muted);
-      font-size: .84rem;
-    }
-
-    .details-grid {
-      display: grid;
-      grid-template-columns: repeat(3,1fr);
-      gap: 25px;
-    }
-
-    .detail-card {
-      padding: 32px 22px;
-      text-align: center;
-    }
-
-    .detail-card i {
-      margin-bottom: 15px;
-      color: var(--gold);
-      font-size: 1.9rem;
-    }
-
-    .detail-card h4 {
-      margin-bottom: 8px;
-      font: 400 1.35rem var(--serif);
-    }
-
-    .detail-card p { color: var(--muted); font-size: .83rem; }
-
-    .confirmation {
-      max-width: 760px;
-      margin: auto;
-      padding: 55px 40px;
-      text-align: center;
-    }
-
-    .confirmation i {
-      margin-bottom: 18px;
-      color: var(--gold);
-      font-size: 2.5rem;
-    }
-
-    .confirmation h3 {
-      margin-bottom: 15px;
-      font: 400 2.2rem var(--serif);
-    }
-
-    .confirmation p {
-      color: var(--muted);
-      font-size: .95rem;
-    }
-
-    .confirmation .highlight {
-      display: inline-block;
-      margin-top: 18px;
-      color: var(--gold);
-      font-size: .8rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-    }
-
-    footer {
-      position: relative;
-      z-index: 1;
-      padding: 60px 20px;
-      text-align: center;
-      background: rgba(13,12,12,.96);
-      border-top: 1px solid var(--border);
-    }
-
-    .footer-names {
-      margin-bottom: 10px;
-      font: 400 2.5rem var(--serif);
-      letter-spacing: 4px;
-    }
-
-    .hashtag {
-      margin-bottom: 16px;
-      color: var(--gold);
-      font-size: .8rem;
-      letter-spacing: 3px;
-    }
-
-    .footer-date {
-      color: rgba(226,201,154,.55);
-      font-size: .7rem;
-      letter-spacing: 2px;
-    }
-
-    .audio-control {
-      position: fixed;
-      right: 25px;
-      bottom: 25px;
-      z-index: 999;
-      width: 48px;
-      height: 48px;
-      border: 1px solid var(--gold);
-      border-radius: 50%;
-      background: rgba(23,20,21,.9);
-      color: var(--gold);
-      cursor: pointer;
-      transition: .3s;
-    }
-
-    .audio-control:hover {
-      background: var(--gold);
-      color: var(--bg);
-      transform: scale(1.08);
-    }
-
-    @media (max-width: 900px) {
-      .nav-links { display: none; }
-      .countdown { grid-template-columns: repeat(2,1fr); }
-      .story-grid, .events-grid { grid-template-columns: 1fr; }
-      .details-grid { grid-template-columns: 1fr; }
-      .timeline::before { left: 15px; }
-      .timeline-item, .timeline-item:nth-child(even) {
-        width: 100%;
-        left: 0;
-        padding: 18px 10px 18px 45px;
-        text-align: left;
-      }
-      .timeline-item .dot, .timeline-item:nth-child(odd) .dot, .timeline-item:nth-child(even) .dot {
-        left: 8px;
-        right: auto;
-      }
-      .photo-card img { height: 430px; }
-    }
-
-    @media (max-width: 520px) {
-      .navbar { padding: 14px 20px; }
-      section { padding: 80px 15px; }
-      .hero-content { padding-top: 60px; }
-      .countdown-wrap { padding: 0 12px; }
-      .countdown { padding: 25px 15px; gap: 12px; }
-      .number { font-size: 2.5rem; }
-      .label { font-size: .6rem; letter-spacing: 1.5px; }
-      .text-card, .confirmation { padding: 30px 22px; }
-      .photo-card img { height: 390px; }
-      .footer-names { font-size: 2rem; }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Invitación de Boda - Cristian & Mary</title>
+
+    <!-- FUENTES -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- ICONOS -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+
+        /* =====================================================
+           VARIABLES
+        ===================================================== */
+
+        :root {
+            --bg-dark: #0d0c0c;
+            --card-bg: rgba(23, 20, 21, 0.88);
+            --card-border: rgba(226, 201, 154, 0.25);
+
+            --gold-primary: #e2c99a;
+            --gold-hover: #f3dfb8;
+
+            --text-light: #f7ebe1;
+            --text-muted: #c3b8b9;
+
+            --font-serif: 'Cormorant Garamond', serif;
+            --font-sans: 'Montserrat', sans-serif;
+
+            --transition: all 0.4s ease;
+        }
+
+
+        /* =====================================================
+           RESET
+        ===================================================== */
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            background: var(--bg-dark);
+            color: var(--text-light);
+
+            font-family: var(--font-sans);
+            font-weight: 300;
+
+            line-height: 1.7;
+
+            overflow-x: hidden;
+
+            position: relative;
+        }
+
+
+        /* =====================================================
+           EFECTO DE FONDO
+        ===================================================== */
+
+        body::before {
+            content: "";
+
+            position: fixed;
+
+            top: 0;
+            left: 0;
+
+            width: 100vw;
+            height: 100vh;
+
+            background:
+                radial-gradient(
+                    circle at 50% 20%,
+                    rgba(226, 201, 154, 0.06) 0%,
+                    transparent 70%
+                );
+
+            pointer-events: none;
+
+            z-index: 0;
+        }
+
+
+        /* =====================================================
+           NAVEGACIÓN
+        ===================================================== */
+
+        .navbar {
+
+            position: fixed;
+
+            top: 0;
+            left: 0;
+
+            width: 100%;
+
+            padding: 18px 40px;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            z-index: 1000;
+
+            background:
+                rgba(13, 12, 12, 0.78);
+
+            backdrop-filter: blur(12px);
+
+            border-bottom:
+                1px solid rgba(226, 201, 154, 0.15);
+        }
+
+
+        .nav-logo {
+
+            font-family: var(--font-serif);
+
+            font-size: 1.5rem;
+
+            color: var(--gold-primary);
+
+            text-decoration: none;
+
+            letter-spacing: 3px;
+        }
+
+
+        .nav-links {
+
+            list-style: none;
+
+            display: flex;
+
+            gap: 25px;
+        }
+
+
+        .nav-links a {
+
+            color: var(--text-light);
+
+            text-decoration: none;
+
+            font-size: 0.72rem;
+
+            letter-spacing: 1.5px;
+
+            text-transform: uppercase;
+
+            transition: var(--transition);
+        }
+
+
+        .nav-links a:hover {
+
+            color: var(--gold-primary);
+        }
+
+
+        /* =====================================================
+           BOTÓN DE MÚSICA
+        ===================================================== */
+
+        .audio-control {
+
+            position: fixed;
+
+            right: 20px;
+            bottom: 20px;
+
+            width: 56px;
+            height: 56px;
+
+            border-radius: 50%;
+
+            border:
+                1px solid var(--gold-primary);
+
+            background:
+                rgba(35, 32, 28, 0.95);
+
+            color: var(--gold-primary);
+
+            z-index: 9999;
+
+            cursor: pointer;
+
+            font-size: 18px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            box-shadow:
+                0 5px 20px rgba(0,0,0,0.35);
+
+            transition:
+                all 0.3s ease;
+        }
+
+
+        .audio-control:hover {
+
+            transform: scale(1.08);
+
+            background:
+                var(--gold-primary);
+
+            color:
+                #222;
+        }
+
+
+        .audio-control.playing {
+
+            animation:
+                musicPulse 1.5s infinite;
+        }
+
+
+        @keyframes musicPulse {
+
+            0%,100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.08);
+            }
+        }
+
+
+        /* =====================================================
+           HERO
+        ===================================================== */
+
+        .hero-section {
+
+            min-height: 100vh;
+
+            position: relative;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            text-align: center;
+
+            overflow: hidden;
+        }
+
+
+        .hero-bg {
+
+            position: absolute;
+
+            inset: 0;
+
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            z-index: 0;
+
+            filter:
+                brightness(0.45)
+                saturate(0.75);
+        }
+
+
+        .hero-section::after {
+
+            content: "";
+
+            position: absolute;
+
+            inset: 0;
+
+            background:
+                linear-gradient(
+                    to bottom,
+                    rgba(0,0,0,0.25),
+                    rgba(0,0,0,0.75)
+                );
+
+            z-index: 1;
+        }
+
+
+        .hero-content {
+
+            position: relative;
+
+            z-index: 2;
+
+            padding: 0 20px;
+
+            max-width: 900px;
+        }
+
+
+        .section-subtitle {
+
+            display: block;
+
+            color:
+                var(--gold-primary);
+
+            font-size: 0.75rem;
+
+            letter-spacing: 5px;
+
+            text-transform: uppercase;
+
+            margin-bottom: 12px;
+        }
+
+
+        .hero-title {
+
+            font-family:
+                var(--font-serif);
+
+            font-size:
+                clamp(3rem, 8vw, 6rem);
+
+            font-weight: 300;
+
+            line-height: 0.95;
+
+            letter-spacing: 7px;
+
+            text-transform: uppercase;
+
+            text-shadow:
+                0 10px 30px rgba(0,0,0,0.8);
+
+            margin: 20px 0;
+        }
+
+
+        .hero-title span {
+
+            display: block;
+
+            color:
+                var(--gold-primary);
+
+            font-style: italic;
+
+            font-size:
+                clamp(2rem, 5vw, 3rem);
+
+            margin: 8px 0;
+        }
+
+
+        .divider-ornament {
+
+            width: 90px;
+
+            height: 1px;
+
+            background:
+                var(--gold-primary);
+
+            margin:
+                20px auto;
+
+            position: relative;
+        }
+
+
+        .divider-ornament::before,
+        .divider-ornament::after {
+
+            content: "✦";
+
+            position: absolute;
+
+            top: -10px;
+
+            color:
+                var(--gold-primary);
+
+            font-size: 12px;
+        }
+
+
+        .divider-ornament::before {
+            left: -18px;
+        }
+
+
+        .divider-ornament::after {
+            right: -18px;
+        }
+
+
+        .hero-date {
+
+            font-size: 1.2rem;
+
+            letter-spacing: 6px;
+
+            color:
+                var(--text-light);
+
+            margin-top: 20px;
+        }
+
+
+        .hero-location {
+
+            color:
+                var(--gold-primary);
+
+            font-size: 0.85rem;
+
+            letter-spacing: 4px;
+
+            text-transform: uppercase;
+
+            margin-top: 10px;
+        }
+
+
+        .scroll-indicator {
+
+            position: absolute;
+
+            bottom: 30px;
+
+            left: 50%;
+
+            transform:
+                translateX(-50%);
+
+            z-index: 3;
+
+            color:
+                var(--gold-primary);
+
+            text-decoration: none;
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            gap: 8px;
+
+            animation:
+                bounce 2s infinite;
+        }
+
+
+        .scroll-indicator span {
+
+            font-size: 0.65rem;
+
+            letter-spacing: 3px;
+
+            text-transform: uppercase;
+        }
+
+
+        @keyframes bounce {
+
+            0%,20%,50%,80%,100% {
+                transform:
+                    translate(-50%,0);
+            }
+
+            40% {
+                transform:
+                    translate(-50%,-10px);
+            }
+
+            60% {
+                transform:
+                    translate(-50%,-5px);
+            }
+        }
+
+
+        /* =====================================================
+           SECCIONES
+        ===================================================== */
+
+        section:not(.hero-section) {
+
+            max-width: 1100px;
+
+            margin: 0 auto;
+
+            padding: 100px 25px;
+        }
+
+
+        .section-header {
+
+            text-align: center;
+
+            margin-bottom: 50px;
+        }
+
+
+        .section-title {
+
+            font-family:
+                var(--font-serif);
+
+            font-size:
+                clamp(2.3rem,5vw,3.5rem);
+
+            font-weight: 400;
+
+            color:
+                var(--text-light);
+
+            margin-top: 8px;
+        }
+
+
+        /* =====================================================
+           CUENTA REGRESIVA
+        ===================================================== */
+
+        .countdown-wrapper {
+
+            max-width: 1100px;
+
+            margin: 0 auto;
+
+            padding: 0 20px;
+
+            position: relative;
+
+            z-index: 10;
+        }
+
+
+        .countdown-container {
+
+            background:
+                var(--card-bg);
+
+            border:
+                1px solid var(--card-border);
+
+            border-radius: 8px;
+
+            padding: 40px;
+
+            margin-top: -60px;
+
+            backdrop-filter:
+                blur(10px);
+
+            box-shadow:
+                0 20px 50px rgba(0,0,0,0.6);
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4,1fr);
+
+            gap: 20px;
+
+            text-align: center;
+        }
+
+
+        .countdown-box .number {
+
+            font-family:
+                var(--font-serif);
+
+            font-size: 3.5rem;
+
+            color:
+                var(--gold-primary);
+
+            line-height: 1;
+        }
+
+
+        .countdown-box .label {
+
+            font-size: 0.7rem;
+
+            letter-spacing: 3px;
+
+            text-transform: uppercase;
+
+            color:
+                var(--text-muted);
+
+            margin-top: 8px;
+        }
+
+
+        /* =====================================================
+           HISTORIA
+        ===================================================== */
+
+        .story-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            gap: 50px;
+
+            align-items: center;
+        }
+
+
+        .story-img-wrapper {
+
+            position: relative;
+
+            overflow: hidden;
+
+            border-radius: 5px;
+
+            border:
+                1px solid var(--card-border);
+
+            box-shadow:
+                0 15px 35px rgba(0,0,0,0.5);
+        }
+
+
+        .story-img-wrapper img {
+
+            width: 100%;
+
+            height: 480px;
+
+            object-fit: cover;
+
+            display: block;
+
+            transition:
+                var(--transition);
+        }
+
+
+        .story-img-wrapper:hover img {
+
+            transform:
+                scale(1.03);
+        }
+
+
+        .story-content {
+
+            background:
+                var(--card-bg);
+
+            padding: 45px;
+
+            border:
+                1px solid var(--card-border);
+
+            border-radius: 5px;
+        }
+
+
+        .quote-text {
+
+            font-family:
+                var(--font-serif);
+
+            font-style: italic;
+
+            font-size: 1.5rem;
+
+            color:
+                var(--gold-primary);
+
+            line-height: 1.5;
+
+            margin-bottom: 20px;
+        }
+
+
+        .story-content p:not(.quote-text) {
+
+            color:
+                var(--text-muted);
+
+            font-size: 0.95rem;
+        }
+
+
+        /* =====================================================
+           EVENTOS
+        ===================================================== */
+
+        .events-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            gap: 40px;
+        }
+
+
+        .event-card {
+
+            background:
+                var(--card-bg);
+
+            border:
+                1px solid var(--card-border);
+
+            border-radius: 6px;
+
+            padding: 45px 30px;
+
+            text-align: center;
+
+            transition:
+                var(--transition);
+        }
+
+
+        .event-card:hover {
+
+            border-color:
+                var(--gold-primary);
+
+            transform:
+                translateY(-5px);
+        }
+
+
+        .event-icon {
+
+            font-size: 2.5rem;
+
+            color:
+                var(--gold-primary);
+
+            margin-bottom: 20px;
+        }
+
+
+        .event-title {
+
+            font-family:
+                var(--font-serif);
+
+            font-size: 2rem;
+
+            color:
+                var(--gold-primary);
+
+            margin-bottom: 20px;
+        }
+
+
+        .event-details p {
+
+            color:
+                var(--text-muted);
+
+            margin: 7px 0;
+        }
+
+
+        .event-details strong {
+
+            color:
+                var(--text-light);
+        }
+
+
+        .btn-outline {
+
+            display: inline-block;
+
+            margin-top: 25px;
+
+            padding: 12px 22px;
+
+            border:
+                1px solid var(--gold-primary);
+
+            color:
+                var(--gold-primary);
+
+            text-decoration: none;
+
+            font-size: 0.7rem;
+
+            letter-spacing: 2px;
+
+            text-transform: uppercase;
+
+            transition:
+                var(--transition);
+        }
+
+
+        .btn-outline:hover {
+
+            background:
+                var(--gold-primary);
+
+            color:
+                var(--bg-dark);
+        }
+
+
+        /* =====================================================
+           ITINERARIO
+        ===================================================== */
+
+        .timeline {
+
+            position: relative;
+
+            max-width: 900px;
+
+            margin: 0 auto;
+        }
+
+
+        .timeline::before {
+
+            content: "";
+
+            position: absolute;
+
+            left: 50%;
+
+            top: 0;
+            bottom: 0;
+
+            width: 1px;
+
+            background:
+                rgba(226,201,154,0.35);
+
+            transform:
+                translateX(-50%);
+        }
+
+
+        .timeline-item {
+
+            width: 50%;
+
+            position: relative;
+
+            padding: 20px 40px;
+        }
+
+
+        .timeline-item:nth-child(odd) {
+
+            left: 0;
+
+            text-align: right;
+        }
+
+
+        .timeline-item:nth-child(even) {
+
+            left: 50%;
+
+            text-align: left;
+        }
+
+
+        .timeline-dot {
+
+            width: 16px;
+
+            height: 16px;
+
+            background:
+                var(--bg-dark);
+
+            border:
+                2px solid var(--gold-primary);
+
+            border-radius: 50%;
+
+            position: absolute;
+
+            top: 28px;
+
+            z-index: 2;
+        }
+
+
+        .timeline-item:nth-child(odd)
+        .timeline-dot {
+
+            right: -8px;
+        }
+
+
+        .timeline-item:nth-child(even)
+        .timeline-dot {
+
+            left: -8px;
+        }
+
+
+        .timeline-box {
+
+            background:
+                var(--card-bg);
+
+            border:
+                1px solid var(--card-border);
+
+            padding: 25px;
+
+            border-radius: 4px;
+        }
+
+
+        .timeline-time {
+
+            font-family:
+                var(--font-serif);
+
+            font-size: 1.6rem;
+
+            color:
+                var(--gold-primary);
+
+            margin-bottom: 5px;
+        }
+
+
+        .timeline-box h4 {
+
+            font-size: 1rem;
+
+            letter-spacing: 1px;
+        }
+
+
+        .timeline-box p {
+
+            font-size: 0.85rem;
+
+            color:
+                var(--text-muted);
+
+            margin-top: 5px;
+        }
+
+
+        /* =====================================================
+           DETALLES
+        ===================================================== */
+
+        .details-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3,1fr);
+
+            gap: 30px;
+        }
+
+
+        .detail-card {
+
+            background:
+                var(--card-bg);
+
+            border:
+                1px solid var(--card-border);
+
+            padding: 35px 25px;
+
+            border-radius: 4px;
+
+            text-align: center;
+        }
+
+
+        .detail-card i {
+
+            font-size: 2rem;
+
+            color:
+                var(--gold-primary);
+
+            margin-bottom: 18px;
+        }
+
+
+        .detail-card h4 {
+
+            font-family:
+                var(--font-serif);
+
+            font-size: 1.4rem;
+
+            margin-bottom: 10px;
+        }
+
+
+        .detail-card .detail-highlight {
+
+            color:
+                var(--gold-primary);
+
+            font-size: 0.85rem;
+
+            letter-spacing: 2px;
+
+            text-transform: uppercase;
+
+            margin-bottom: 8px;
+        }
+
+
+        .detail-card p {
+
+            font-size: 0.85rem;
+
+            color:
+                var(--text-muted);
+        }
+
+
+        /* =====================================================
+           REGALOS
+        ===================================================== */
+
+        .gifts-container {
+
+            background:
+                var(--card-bg);
+
+            border:
+                1px solid var(--card-border);
+
+            border-radius: 6px;
+
+            padding: 45px;
+
+            display: grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            gap: 40px;
+
+            align-items: center;
+        }
+
+
+        .gift-image {
+
+            width: 100%;
+
+            border-radius: 4px;
+
+            border:
+                1px solid var(--card-border);
+        }
+
+
+        .gifts-container h3 {
+
+            font-family:
+                var(--font-serif);
+
+            font-size: 2rem;
+
+            color:
+                var(--gold-primary);
+
+            margin-bottom: 15px;
+        }
+
+
+        .gifts-container p {
+
+            color:
+                var(--text-muted);
+
+            font-size: 0.95rem;
+        }
+
+
+        .bank-details {
+
+            background:
+                rgba(13,12,12,0.65);
+
+            border:
+                1px solid var(--card-border);
+
+            padding: 20px;
+
+            border-radius: 4px;
+
+            margin-top: 20px;
+        }
+
+
+        .bank-account {
+
+            font-size: 1rem;
+
+            color:
+                var(--gold-primary);
+
+            margin-top: 5px;
+        }
+
+
+        .copy-btn {
+
+            background:
+                rgba(226,201,154,0.15);
+
+            border:
+                1px solid var(--gold-primary);
+
+            color:
+                var(--gold-primary);
+
+            padding: 8px 14px;
+
+            font-size: 0.72rem;
+
+            cursor: pointer;
+
+            border-radius: 2px;
+
+            margin-top: 12px;
+
+            transition:
+                var(--transition);
+        }
+
+
+        .copy-btn:hover {
+
+            background:
+                var(--gold-primary);
+
+            color:
+                var(--bg-dark);
+        }
+
+
+        /* =====================================================
+           CONFIRMACIÓN
+        ===================================================== */
+
+        .confirmation-box {
+
+            max-width: 750px;
+
+            margin: 0 auto;
+
+            background:
+                var(--card-bg);
+
+            border:
+                1px solid var(--card-border);
+
+            padding: 55px 40px;
+
+            text-align: center;
+
+            border-radius: 6px;
+        }
+
+
+        .confirmation-box i {
+
+            color:
+                var(--gold-primary);
+
+            font-size: 2.5rem;
+
+            margin-bottom: 20px;
+        }
+
+
+        .confirmation-box h3 {
+
+            font-family:
+                var(--font-serif);
+
+            font-size: 2.2rem;
+
+            color:
+                var(--gold-primary);
+
+            margin-bottom: 15px;
+        }
+
+
+        .confirmation-box p {
+
+            color:
+                var(--text-muted);
+
+            font-size: 0.95rem;
+
+            line-height: 1.8;
+        }
+
+
+        /* =====================================================
+           FOOTER
+        ===================================================== */
+
+        footer {
+
+            text-align: center;
+
+            padding: 70px 20px;
+
+            background:
+                rgba(13,12,12,0.95);
+
+            border-top:
+                1px solid var(--card-border);
+        }
+
+
+        .footer-names {
+
+            font-family:
+                var(--font-serif);
+
+            font-size: 2.8rem;
+
+            color:
+                var(--text-light);
+
+            margin-bottom: 15px;
+
+            letter-spacing: 4px;
+        }
+
+
+        .footer-hashtag {
+
+            color:
+                var(--gold-primary);
+
+            font-size: 0.85rem;
+
+            letter-spacing: 3px;
+
+            margin-bottom: 20px;
+        }
+
+
+        footer p {
+
+            color:
+                var(--text-muted);
+        }
+
+
+        /* =====================================================
+           RESPONSIVE
+        ===================================================== */
+
+        @media (max-width: 900px) {
+
+            .navbar {
+
+                padding:
+                    15px 20px;
+            }
+
+
+            .nav-links {
+
+                display: none;
+            }
+
+
+            .hero-title {
+
+                font-size: 3.2rem;
+            }
+
+
+            .countdown-container {
+
+                grid-template-columns:
+                    repeat(2,1fr);
+
+                padding: 30px 20px;
+            }
+
+
+            .countdown-box .number {
+
+                font-size: 2.7rem;
+            }
+
+
+            .story-grid,
+            .events-grid,
+            .gifts-container {
+
+                grid-template-columns:
+                    1fr;
+            }
+
+
+            .story-img-wrapper img {
+
+                height: 400px;
+            }
+
+
+            .details-grid {
+
+                grid-template-columns:
+                    1fr;
+            }
+
+
+            .timeline::before {
+
+                left: 20px;
+            }
+
+
+            .timeline-item {
+
+                width: 100%;
+
+                left: 0 !important;
+
+                padding-left: 50px;
+
+                padding-right: 10px;
+
+                text-align: left !important;
+            }
+
+
+            .timeline-item .timeline-dot {
+
+                left: 12px !important;
+
+                right: auto !important;
+            }
+
+
+            .gifts-container {
+
+                padding: 25px;
+            }
+
+        }
+
+
+        @media (max-width: 500px) {
+
+            .hero-title {
+
+                font-size: 2.7rem;
+
+                letter-spacing: 4px;
+            }
+
+
+            .hero-date {
+
+                font-size: 0.95rem;
+
+                letter-spacing: 4px;
+            }
+
+
+            .hero-location {
+
+                font-size: 0.72rem;
+
+                letter-spacing: 2px;
+            }
+
+
+            section:not(.hero-section) {
+
+                padding:
+                    75px 18px;
+            }
+
+
+            .countdown-wrapper {
+
+                padding:
+                    0 15px;
+            }
+
+
+            .countdown-container {
+
+                margin-top: -40px;
+            }
+
+
+            .countdown-box .number {
+
+                font-size: 2.3rem;
+            }
+
+
+            .countdown-box .label {
+
+                font-size: 0.6rem;
+
+                letter-spacing: 1.5px;
+            }
+
+
+            .story-content {
+
+                padding: 30px 25px;
+            }
+
+
+            .confirmation-box {
+
+                padding:
+                    40px 25px;
+            }
+
+
+            .audio-control {
+
+                width: 52px;
+
+                height: 52px;
+
+                right: 15px;
+
+                bottom: 15px;
+            }
+
+        }
+
+    </style>
 </head>
 
+
 <body>
-  <nav class="navbar">
-    <a class="nav-logo" href="#inicio">C & M</a>
-    <ul class="nav-links">
-      <li><a href="#historia">Historia</a></li>
-      <li><a href="#eventos">Ceremonia</a></li>
-      <li><a href="#itinerario">Itinerario</a></li>
-      <li><a href="#detalles">Detalles</a></li>
-      <li><a href="#confirmacion">Confirmación</a></li>
-    </ul>
-  </nav>
 
-  <button class="audio-control" id="audioToggle" aria-label="Activar o pausar música" title="Música">
-    <i class="fa-solid fa-music"></i>
-  </button>
 
-  <!-- Música local: coloca tu archivo MP3 dentro de la carpeta assets
-       y llámalo exactamente: musica.mp3 -->
-  <audio id="weddingAudio" preload="auto" loop>
-    <source src="assets/musica.mp3" type="audio/mpeg">
-    Tu navegador no admite reproducción de audio.
-  </audio>
+    <!-- =====================================================
+         NAVEGACIÓN
+    ====================================================== -->
 
-  <section class="hero" id="inicio">
-    <img src="assets/foto-boda.jpg" alt="Cristian y Mary" class="hero-bg">
-    <div class="hero-content">
-      <div class="hero-kicker">Nuestra boda</div>
-      <h1 class="hero-title">
-        Cristian
-        <span>&</span>
-        Mary
-      </h1>
-      <div class="divider"></div>
-      <div class="hero-date">17 · 07 · 2027</div>
-      <div class="hero-location">Ibarra · Ecuador</div>
-      <a class="btn" href="#eventos">Ver detalles</a>
-    </div>
+    <nav class="navbar">
 
-    <a class="scroll" href="#contador">
-      <small>Desliza</small>
-      <i class="fa-solid fa-chevron-down"></i>
-    </a>
-  </section>
-
-  <div class="countdown-wrap" id="contador">
-    <div class="countdown">
-      <div>
-        <div class="number" id="days">00</div>
-        <div class="label">Días</div>
-      </div>
-      <div>
-        <div class="number" id="hours">00</div>
-        <div class="label">Horas</div>
-      </div>
-      <div>
-        <div class="number" id="minutes">00</div>
-        <div class="label">Minutos</div>
-      </div>
-      <div>
-        <div class="number" id="seconds">00</div>
-        <div class="label">Segundos</div>
-      </div>
-    </div>
-  </div>
-
-  <section id="historia">
-    <div class="section-header">
-      <span class="section-subtitle">Nuestro camino</span>
-      <h2 class="section-title">Nuestra Historia</h2>
-      <div class="divider"></div>
-    </div>
-
-    <div class="story-grid">
-      <div class="photo-card">
-        <img src="assets/foto-boda.jpg" alt="Cristian y Mary celebrando su amor">
-      </div>
-      <div class="text-card">
-        <p class="quote">“El amor no se mira con los ojos, sino con el alma.”</p>
-        <p>
-          Con la bendición de nuestras familias y rodeados del cariño de quienes
-          más queremos, hemos decidido unir nuestras vidas y celebrar juntos
-          este momento tan especial.
-        </p>
-        <br>
-        <p>
-          Nos encantará compartir contigo este día, lleno de amor, alegría y
-          recuerdos que quedarán para siempre.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <section id="eventos">
-    <div class="section-header">
-      <span class="section-subtitle">Dónde y cuándo</span>
-      <h2 class="section-title">Ceremonia & Recepción</h2>
-      <div class="divider"></div>
-    </div>
-
-    <div class="events-grid">
-      <article class="event-card">
-        <i class="fa-solid fa-ring event-icon"></i>
-        <h3 class="event-title">Ceremonia</h3>
-        <div class="event-details">
-          <p><strong>Hora:</strong> 11H00 A.M.</p>
-          <p><strong>Lugar:</strong> Rancho Events</p>
-          <p class="event-address">Panamericana Sur Km 4, Ibarra</p>
-        </div>
-        <a class="btn" target="_blank" rel="noopener"
-           href="https://www.google.com/maps/search/?api=1&query=Rancho+Events+Panamericana+Sur+Km+4+Ibarra">
-          Ver ubicación
+        <a href="#hero" class="nav-logo">
+            C & M
         </a>
-      </article>
 
-      <article class="event-card">
-        <i class="fa-solid fa-champagne-glasses event-icon"></i>
-        <h3 class="event-title">Recepción</h3>
-        <div class="event-details">
-          <p><strong>Hora:</strong> 13H00</p>
-          <p><strong>Lugar:</strong> Rancho Events</p>
-          <p class="event-address">Panamericana Sur Km 4, Ibarra</p>
+        <ul class="nav-links">
+
+            <li>
+                <a href="#historia">Historia</a>
+            </li>
+
+            <li>
+                <a href="#eventos">Eventos</a>
+            </li>
+
+            <li>
+                <a href="#itinerario">Itinerario</a>
+            </li>
+
+            <li>
+                <a href="#detalles">Detalles</a>
+            </li>
+
+            <li>
+                <a href="#regalos">Regalos</a>
+            </li>
+
+            <li>
+                <a href="#confirmacion">Confirmación</a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+
+    <!-- =====================================================
+         MÚSICA
+         
+         IMPORTANTE:
+         El archivo debe llamarse exactamente:
+         
+         musica.mp3
+         
+         y estar dentro de:
+         
+         assets/musica.mp3
+    ====================================================== -->
+
+    <button
+        class="audio-control"
+        id="audioToggle"
+        title="Reproducir música"
+        aria-label="Reproducir música">
+
+        <i class="fa-solid fa-music"></i>
+
+    </button>
+
+
+    <audio
+        id="bgMusic"
+        preload="auto"
+        loop>
+
+        <source
+            src="./assets/musica.mp3"
+            type="audio/mpeg">
+
+    </audio>
+
+
+    <!-- =====================================================
+         PORTADA
+    ====================================================== -->
+
+    <section
+        class="hero-section"
+        id="hero">
+
+
+        <!-- FOTO DE FONDO -->
+
+        <img
+            src="./assets/foto-boda.jpg"
+            alt="Cristian y Mary"
+            class="hero-bg">
+
+
+        <div class="hero-content">
+
+            <span class="section-subtitle">
+                NUESTRA BODA
+            </span>
+
+
+            <h1 class="hero-title">
+
+                CRISTIAN
+
+                <span>&</span>
+
+                MARY
+
+            </h1>
+
+
+            <div class="divider-ornament"></div>
+
+
+            <div class="hero-date">
+
+                17 . 07 . 2027
+
+            </div>
+
+
+            <div class="hero-location">
+
+                IBARRA, ECUADOR
+
+            </div>
+
         </div>
-        <a class="btn" target="_blank" rel="noopener"
-           href="https://www.google.com/maps/search/?api=1&query=Rancho+Events+Panamericana+Sur+Km+4+Ibarra">
-          Ver ubicación
+
+
+        <a
+            href="#contador"
+            class="scroll-indicator">
+
+            <span>
+                DESLIZA
+            </span>
+
+            <i class="fa-solid fa-chevron-down"></i>
+
         </a>
-      </article>
-    </div>
-  </section>
 
-  <section id="itinerario">
-    <div class="section-header">
-      <span class="section-subtitle">Cronograma</span>
-      <h2 class="section-title">Itinerario del Día</h2>
-      <div class="divider"></div>
-    </div>
+    </section>
 
-    <div class="timeline">
-      <div class="timeline-item">
-        <div class="dot"></div>
-        <div class="timeline-box">
-          <div class="timeline-time">11H00 A.M.</div>
-          <h4>Ceremonia</h4>
-          <p>El momento en que comenzaremos oficialmente esta nueva etapa juntos.</p>
+
+
+    <!-- =====================================================
+         CUENTA REGRESIVA
+    ====================================================== -->
+
+    <div
+        class="countdown-wrapper"
+        id="contador">
+
+        <div class="countdown-container">
+
+
+            <div class="countdown-box">
+
+                <div
+                    class="number"
+                    id="days">
+
+                    00
+
+                </div>
+
+                <div class="label">
+                    Días
+                </div>
+
+            </div>
+
+
+            <div class="countdown-box">
+
+                <div
+                    class="number"
+                    id="hours">
+
+                    00
+
+                </div>
+
+                <div class="label">
+                    Horas
+                </div>
+
+            </div>
+
+
+            <div class="countdown-box">
+
+                <div
+                    class="number"
+                    id="minutes">
+
+                    00
+
+                </div>
+
+                <div class="label">
+                    Minutos
+                </div>
+
+            </div>
+
+
+            <div class="countdown-box">
+
+                <div
+                    class="number"
+                    id="seconds">
+
+                    00
+
+                </div>
+
+                <div class="label">
+                    Segundos
+                </div>
+
+            </div>
+
+
         </div>
-      </div>
 
-      <div class="timeline-item">
-        <div class="dot"></div>
-        <div class="timeline-box">
-          <div class="timeline-time">13H00</div>
-          <h4>Recepción</h4>
-          <p>Celebración, alegría y un brindis por nuestra nueva historia.</p>
+    </div>
+
+
+
+    <!-- =====================================================
+         HISTORIA
+    ====================================================== -->
+
+    <section id="historia">
+
+
+        <div class="section-header">
+
+            <span class="section-subtitle">
+                NUESTRA HISTORIA
+            </span>
+
+            <h2 class="section-title">
+                El comienzo de nuestra historia
+            </h2>
+
+            <div class="divider-ornament"></div>
+
         </div>
-      </div>
-    </div>
-  </section>
 
-  <section id="detalles">
-    <div class="section-header">
-      <span class="section-subtitle">Ten en cuenta</span>
-      <h2 class="section-title">Detalles Importantes</h2>
-      <div class="divider"></div>
-    </div>
 
-    <div class="details-grid">
-      <div class="detail-card">
-        <i class="fa-solid fa-location-dot"></i>
-        <h4>Un mismo lugar</h4>
-        <p>La ceremonia y la recepción se realizarán en Rancho Events.</p>
-      </div>
+        <div class="story-grid">
 
-      <div class="detail-card">
-        <i class="fa-solid fa-clock"></i>
-        <h4>Horarios</h4>
-        <p>Ceremonia: 11H00 A.M. · Recepción: 13H00.</p>
-      </div>
 
-      <div class="detail-card">
-        <i class="fa-solid fa-heart"></i>
-        <h4>Un día especial</h4>
-        <p>Gracias por acompañarnos y ser parte de este momento tan importante.</p>
-      </div>
-    </div>
-  </section>
+            <div class="story-img-wrapper">
 
-  <section id="confirmacion">
-    <div class="section-header">
-      <span class="section-subtitle">Muy pronto</span>
-      <h2 class="section-title">Confirmación de Asistencia</h2>
-      <div class="divider"></div>
-    </div>
+                <img
+                    src="./assets/foto-boda.jpg"
+                    alt="Cristian y Mary">
 
-    <div class="confirmation">
-      <i class="fa-regular fa-envelope"></i>
-      <h3>Queremos compartir este día contigo</h3>
-      <p>
-        Para facilitar la organización de nuestra boda, <strong>nos pondremos
-        en contacto contigo para confirmar tu asistencia</strong>.
-      </p>
-      <span class="highlight">Gracias por acompañarnos en este momento tan especial</span>
-    </div>
-  </section>
+            </div>
 
-  <footer>
-    <div class="footer-names">CRISTIAN & MARY</div>
-    <div class="hashtag">#BodaCristianYMary</div>
-    <p>17 DE JULIO DE 2027 · IBARRA, ECUADOR</p>
-    <div class="footer-date">Con amor, esperamos compartir este día contigo.</div>
-  </footer>
 
-  <script>
-    // Cuenta regresiva: 14 de diciembre de 2026, 11:00 (hora local del dispositivo).
-    const weddingDate = new Date(2027, 6, 17, 11, 0, 0).getTime();
+            <div class="story-content">
 
-    function updateCountdown() {
-      const now = Date.now();
-      const distance = weddingDate - now;
+                <p class="quote-text">
 
-      if (distance <= 0) {
-        document.getElementById("days").textContent = "00";
-        document.getElementById("hours").textContent = "00";
-        document.getElementById("minutes").textContent = "00";
-        document.getElementById("seconds").textContent = "00";
-        return;
-      }
+                    "El amor no se mira con los ojos,
+                    sino con el alma."
 
-      const days = Math.floor(distance / 86400000);
-      const hours = Math.floor((distance % 86400000) / 3600000);
-      const minutes = Math.floor((distance % 3600000) / 60000);
-      const seconds = Math.floor((distance % 60000) / 1000);
+                </p>
 
-      document.getElementById("days").textContent = String(days).padStart(2, "0");
-      document.getElementById("hours").textContent = String(hours).padStart(2, "0");
-      document.getElementById("minutes").textContent = String(minutes).padStart(2, "0");
-      document.getElementById("seconds").textContent = String(seconds).padStart(2, "0");
-    }
 
-    updateCountdown();
-    setInterval(updateCountdown, 1000);
+                <p>
 
-    // Música local MP3.
-    // Coloca el archivo en: assets/musica.mp3
-    // Los navegadores bloquean el autoplay con sonido al abrir la página,
-    // por eso la música comienza con la primera interacción del visitante.
-    const weddingAudio = document.getElementById("weddingAudio");
-    const audioToggle = document.getElementById("audioToggle");
-    let playing = false;
-    let musicStarted = false;
+                    Con la bendición de nuestras familias
+                    y el cariño de nuestros amigos,
+                    hemos decidido unir nuestras vidas
+                    para siempre.
 
-    async function startMusic() {
-      if (musicStarted) return;
-      try {
-        await weddingAudio.play();
-        playing = true;
-        musicStarted = true;
-        audioToggle.innerHTML = '<i class="fa-solid fa-volume-high"></i>';
-      } catch (error) {
-        // Si el navegador todavía bloquea la reproducción, el botón permitirá iniciarla.
-      }
-    }
+                </p>
 
-    // Primera interacción del visitante: intenta iniciar la música.
-    document.addEventListener("click", startMusic, { once: true });
-    document.addEventListener("touchstart", startMusic, { once: true, passive: true });
 
-    audioToggle.addEventListener("click", async (event) => {
-      event.stopPropagation();
+                <br>
 
-      if (!playing) {
-        try {
-          await weddingAudio.play();
-          playing = true;
-          musicStarted = true;
-          audioToggle.innerHTML = '<i class="fa-solid fa-volume-high"></i>';
-        } catch (error) {
-          console.log("No se pudo reproducir el audio:", error);
+
+                <p>
+
+                    Queremos compartir contigo este momento
+                    tan especial y celebrar juntos el inicio
+                    de una nueva etapa de nuestras vidas.
+
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         EVENTOS
+    ====================================================== -->
+
+    <section id="eventos">
+
+
+        <div class="section-header">
+
+            <span class="section-subtitle">
+                DÓNDE Y CUÁNDO
+            </span>
+
+            <h2 class="section-title">
+                Ceremonia & Recepción
+            </h2>
+
+            <div class="divider-ornament"></div>
+
+        </div>
+
+
+        <div class="events-grid">
+
+
+            <!-- CEREMONIA -->
+
+            <div class="event-card">
+
+                <i
+                    class="fa-solid fa-church event-icon">
+                </i>
+
+
+                <h3 class="event-title">
+                    Ceremonia
+                </h3>
+
+
+                <div class="event-details">
+
+                    <p>
+                        <strong>Fecha:</strong>
+                        17 de julio de 2027
+                    </p>
+
+                    <p>
+                        <strong>Hora:</strong>
+                        11H00 A.M.
+                    </p>
+
+                    <p>
+                        <strong>Lugar:</strong>
+                        Rancho Events
+                    </p>
+
+                    <p>
+                        Panamericana Sur Km 4
+                    </p>
+
+                    <p>
+                        Ibarra, Ecuador
+                    </p>
+
+                </div>
+
+
+                <a
+                    href="https://www.google.com/maps/search/?api=1&query=Rancho+Events+Panamericana+Sur+Km+4+Ibarra+Ecuador"
+                    target="_blank"
+                    class="btn-outline">
+
+                    VER UBICACIÓN
+
+                </a>
+
+            </div>
+
+
+
+            <!-- RECEPCIÓN -->
+
+            <div class="event-card">
+
+                <i
+                    class="fa-solid fa-champagne-glasses event-icon">
+                </i>
+
+
+                <h3 class="event-title">
+                    Recepción
+                </h3>
+
+
+                <div class="event-details">
+
+                    <p>
+                        <strong>Fecha:</strong>
+                        17 de julio de 2027
+                    </p>
+
+                    <p>
+                        <strong>Hora:</strong>
+                        13H00
+                    </p>
+
+                    <p>
+                        <strong>Lugar:</strong>
+                        Rancho Events
+                    </p>
+
+                    <p>
+                        Panamericana Sur Km 4
+                    </p>
+
+                    <p>
+                        Ibarra, Ecuador
+                    </p>
+
+                </div>
+
+
+                <a
+                    href="https://www.google.com/maps/search/?api=1&query=Rancho+Events+Panamericana+Sur+Km+4+Ibarra+Ecuador"
+                    target="_blank"
+                    class="btn-outline">
+
+                    VER UBICACIÓN
+
+                </a>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         ITINERARIO
+    ====================================================== -->
+
+    <section id="itinerario">
+
+
+        <div class="section-header">
+
+            <span class="section-subtitle">
+                CRONOGRAMA
+            </span>
+
+            <h2 class="section-title">
+                Itinerario del Día
+            </h2>
+
+            <div class="divider-ornament"></div>
+
+        </div>
+
+
+        <div class="timeline">
+
+
+            <div class="timeline-item">
+
+                <div class="timeline-dot"></div>
+
+                <div class="timeline-box">
+
+                    <div class="timeline-time">
+                        11H00 A.M.
+                    </div>
+
+                    <h4>
+                        Ceremonia
+                    </h4>
+
+                    <p>
+                        Celebración de nuestra unión
+                        matrimonial.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="timeline-item">
+
+                <div class="timeline-dot"></div>
+
+                <div class="timeline-box">
+
+                    <div class="timeline-time">
+                        13H00
+                    </div>
+
+                    <h4>
+                        Recepción
+                    </h4>
+
+                    <p>
+                        Bienvenida a nuestros invitados
+                        y celebración.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="timeline-item">
+
+                <div class="timeline-dot"></div>
+
+                <div class="timeline-box">
+
+                    <div class="timeline-time">
+                        DESPUÉS
+                    </div>
+
+                    <h4>
+                        Celebración
+                    </h4>
+
+                    <p>
+                        Almuerzo, brindis, música y
+                        momentos especiales.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         DETALLES IMPORTANTES
+    ====================================================== -->
+
+    <section id="detalles">
+
+
+        <div class="section-header">
+
+            <span class="section-subtitle">
+                TEN EN CUENTA
+            </span>
+
+            <h2 class="section-title">
+                Detalles Importantes
+            </h2>
+
+            <div class="divider-ornament"></div>
+
+        </div>
+
+
+        <div class="details-grid">
+
+
+            <!-- VESTIMENTA -->
+
+            <div class="detail-card">
+
+                <i class="fa-solid fa-user-tie"></i>
+
+                <h4>
+                    Código de Vestimenta
+                </h4>
+
+                <p class="detail-highlight">
+                    Elegante
+                </p>
+
+                <p>
+                    Te invitamos a acompañarnos
+                    con tu mejor atuendo para
+                    celebrar este día tan especial.
+                </p>
+
+            </div>
+
+
+
+            <!-- UBICACIÓN -->
+
+            <div class="detail-card">
+
+                <i class="fa-solid fa-location-dot"></i>
+
+                <h4>
+                    Lugar
+                </h4>
+
+                <p class="detail-highlight">
+                    Rancho Events
+                </p>
+
+                <p>
+                    Panamericana Sur Km 4,
+                    Ibarra, Ecuador.
+                </p>
+
+            </div>
+
+
+
+            <!-- CELEBRACIÓN -->
+
+            <div class="detail-card">
+
+                <i class="fa-solid fa-heart"></i>
+
+                <h4>
+                    Nuestro Día
+                </h4>
+
+                <p class="detail-highlight">
+                    17 de julio de 2027
+                </p>
+
+                <p>
+                    Gracias por acompañarnos
+                    en el inicio de esta nueva
+                    etapa de nuestras vidas.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         REGALOS
+         
+         Se conserva la sección de lluvia de sobres
+         y transferencia bancaria del código original.
+    ====================================================== -->
+
+    <section id="regalos">
+
+
+        <div class="section-header">
+
+            <span class="section-subtitle">
+                MUESTRA DE CARIÑO
+            </span>
+
+            <h2 class="section-title">
+                Mesa de Regalos
+            </h2>
+
+            <div class="divider-ornament"></div>
+
+        </div>
+
+
+        <div class="gifts-container">
+
+
+            <div>
+
+                <img
+                    src="https://i.etsystatic.com/6307328/r/il/4e7ed5/7723332281/il_570xN.7723332281_bncn.jpg"
+                    alt="Regalos de boda"
+                    class="gift-image">
+
+            </div>
+
+
+
+            <div>
+
+                <h3>
+                    Tu Presencia es Nuestro Mejor Regalo
+                </h3>
+
+
+                <p>
+
+                    Si deseas tener un detalle adicional
+                    con nosotros para nuestra nueva etapa
+                    juntos:
+
+                </p>
+
+
+                <p style="margin-top:20px;">
+
+                    <i
+                        class="fa-solid fa-envelope"
+                        style="color:var(--gold-primary); margin-right:8px;">
+                    </i>
+
+                    <strong>
+                        Lluvia de Sobres:
+                    </strong>
+
+                    Cofre disponible en la recepción.
+
+                </p>
+
+
+                <!-- TRANSFERENCIA -->
+
+                <div class="bank-details">
+
+                    <p>
+
+                        <i
+                            class="fa-solid fa-building-columns"
+                            style="color:var(--gold-primary); margin-right:8px;">
+                        </i>
+
+                        <strong>
+                            Transferencia Bancaria:
+                        </strong>
+
+                    </p>
+
+
+                    <p
+                        style="font-size:0.85rem; margin-top:8px;">
+
+                        Banco Guayaquil -
+                        Cta. Ahorros
+
+                    </p>
+
+
+                    <!-- NÚMERO DE CUENTA ORIGINAL -->
+
+                    <p
+                        class="bank-account"
+                        id="accountNum">
+
+                        123-456789-0
+
+                    </p>
+
+
+                    <p
+                        style="font-size:0.8rem;">
+
+                        Titular:
+                        Cristian & Mary
+
+                    </p>
+
+
+                    <button
+                        class="copy-btn"
+                        onclick="copyAccount()">
+
+                        <i class="fa-solid fa-copy"></i>
+
+                        Copiar Número de Cuenta
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         CONFIRMACIÓN DE ASISTENCIA
+         
+         SIN FORMULARIO
+    ====================================================== -->
+
+    <section id="confirmacion">
+
+
+        <div class="section-header">
+
+            <span class="section-subtitle">
+                UN MOMENTO ESPECIAL
+            </span>
+
+            <h2 class="section-title">
+                Confirmación de Asistencia
+            </h2>
+
+            <div class="divider-ornament"></div>
+
+        </div>
+
+
+        <div class="confirmation-box">
+
+
+            <i class="fa-solid fa-envelope-open-text"></i>
+
+
+            <h3>
+                Queremos celebrarlo contigo
+            </h3>
+
+
+            <p>
+
+                Para nosotros será muy especial
+                contar con tu presencia.
+
+            </p>
+
+
+            <br>
+
+
+            <p>
+
+                <strong style="color:var(--gold-primary);">
+                    No necesitas llenar ningún formulario.
+                </strong>
+
+            </p>
+
+
+            <br>
+
+
+            <p>
+
+                Nosotros nos comunicaremos contigo
+                personalmente para confirmar tu
+                asistencia a nuestra boda.
+
+            </p>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <footer>
+
+
+        <h3 class="footer-names">
+            CRISTIAN & MARY
+        </h3>
+
+
+        <p class="footer-hashtag">
+            #BodaCristianYMary
+        </p>
+
+
+        <p>
+            ¡Gracias por acompañarnos
+            en este día tan especial!
+        </p>
+
+
+        <p
+            style="font-size:0.75rem; margin-top:20px;">
+
+            17 DE JULIO DE 2027
+            •
+            IBARRA, ECUADOR
+
+        </p>
+
+
+    </footer>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <script>
+
+
+        /* =====================================================
+           1. CUENTA REGRESIVA
+
+           17 de julio de 2027
+           11:00 AM
+        ====================================================== */
+
+        const weddingDate =
+            new Date("2027-07-17T11:00:00-05:00").getTime();
+
+
+        function updateCountdown() {
+
+            const now =
+                new Date().getTime();
+
+
+            const distance =
+                weddingDate - now;
+
+
+            if (distance > 0) {
+
+
+                const days =
+                    Math.floor(
+                        distance /
+                        (1000 * 60 * 60 * 24)
+                    );
+
+
+                const hours =
+                    Math.floor(
+                        (distance %
+                        (1000 * 60 * 60 * 24)) /
+                        (1000 * 60 * 60)
+                    );
+
+
+                const minutes =
+                    Math.floor(
+                        (distance %
+                        (1000 * 60 * 60)) /
+                        (1000 * 60)
+                    );
+
+
+                const seconds =
+                    Math.floor(
+                        (distance %
+                        (1000 * 60)) /
+                        1000
+                    );
+
+
+                document.getElementById("days")
+                    .textContent =
+                    String(days).padStart(2,"0");
+
+
+                document.getElementById("hours")
+                    .textContent =
+                    String(hours).padStart(2,"0");
+
+
+                document.getElementById("minutes")
+                    .textContent =
+                    String(minutes).padStart(2,"0");
+
+
+                document.getElementById("seconds")
+                    .textContent =
+                    String(seconds).padStart(2,"0");
+
+
+            } else {
+
+
+                document.getElementById("days")
+                    .textContent = "00";
+
+                document.getElementById("hours")
+                    .textContent = "00";
+
+                document.getElementById("minutes")
+                    .textContent = "00";
+
+                document.getElementById("seconds")
+                    .textContent = "00";
+
+            }
+
         }
-      } else {
-        weddingAudio.pause();
-        playing = false;
-        audioToggle.innerHTML = '<i class="fa-solid fa-volume-xmark"></i>';
-      }
-    });
-  </script>
+
+
+        updateCountdown();
+
+
+        setInterval(
+            updateCountdown,
+            1000
+        );
+
+
+
+        /* =====================================================
+           2. MÚSICA
+
+           SOLO SE REPRODUCE AL TOCAR EL ICONO.
+        ====================================================== */
+
+        const bgMusic =
+            document.getElementById("bgMusic");
+
+
+        const audioToggle =
+            document.getElementById("audioToggle");
+
+
+        audioToggle.addEventListener(
+            "click",
+            async function() {
+
+
+                try {
+
+
+                    if (bgMusic.paused) {
+
+
+                        /*
+                         * Carga nuevamente el archivo.
+                         * Esto ayuda a evitar problemas
+                         * en algunos navegadores.
+                         */
+
+                        bgMusic.load();
+
+
+                        await bgMusic.play();
+
+
+                        audioToggle.classList
+                            .add("playing");
+
+
+                        audioToggle.innerHTML =
+                            '<i class="fa-solid fa-volume-high"></i>';
+
+
+                        audioToggle.setAttribute(
+                            "title",
+                            "Pausar música"
+                        );
+
+
+                        audioToggle.setAttribute(
+                            "aria-label",
+                            "Pausar música"
+                        );
+
+
+                    } else {
+
+
+                        bgMusic.pause();
+
+
+                        audioToggle.classList
+                            .remove("playing");
+
+
+                        audioToggle.innerHTML =
+                            '<i class="fa-solid fa-music"></i>';
+
+
+                        audioToggle.setAttribute(
+                            "title",
+                            "Reproducir música"
+                        );
+
+
+                        audioToggle.setAttribute(
+                            "aria-label",
+                            "Reproducir música"
+                        );
+
+                    }
+
+
+                } catch(error) {
+
+
+                    console.error(
+                        "Error al reproducir musica.mp3:",
+                        error
+                    );
+
+
+                    alert(
+                        "No se pudo reproducir la música. " +
+                        "Verifica que el archivo se llame exactamente " +
+                        "musica.mp3 y que esté dentro de la carpeta assets."
+                    );
+
+                }
+
+            }
+        );
+
+
+
+        /* =====================================================
+           3. COPIAR CUENTA BANCARIA
+        ====================================================== */
+
+        function copyAccount() {
+
+
+            const account =
+                document.getElementById(
+                    "accountNum"
+                ).innerText.trim();
+
+
+            navigator.clipboard.writeText(account)
+                .then(function() {
+
+                    alert(
+                        "Número de cuenta copiado."
+                    );
+
+                })
+                .catch(function() {
+
+                    alert(
+                        "No se pudo copiar automáticamente. " +
+                        "Número de cuenta: " +
+                        account
+                    );
+
+                });
+
+        }
+
+
+    </script>
+
+
 </body>
 </html>
